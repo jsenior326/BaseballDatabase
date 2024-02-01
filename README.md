@@ -3,16 +3,25 @@
 RadRacoons in a complete baseball database using data from the Lahman Baseball Database as well as an updated hall of fame data manually added to the already existing file using data found online.
 ## Setup
 
-Create the database by logging into your dbms and run the following
+Create the database by logging into your DBMS and run the following
 
 ```bash
  \. schema.sql
 ```
-Load the data by running the following in your terminal in the same directory (this will also load the hall of fame data from load_hall.py)
+Change the username and password in the config file "csi3335sp2022.py" to your login information for your DMBS.
+```python
+mysql = {
+         "host":"localhost",
+         "user":"web",
+	        "password":'foo',
+	        "db":"RadRacoons"
+}
+```
+Load the data by running the following in your terminal in the same directory (This will also load the hall of fame data from load_hall.py. This may take a while).
 ```bash
 python load_data.py
 ```
-Start the flask app by running the following in your terminal, will run automatically assuming all dependencies have been installed beforehand.
+Start the Flask app by running the following in your terminal, will run automatically assuming all dependencies have been installed beforehand.
 ```bash
 export FLASK_APP=project.py
 flask run
