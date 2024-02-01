@@ -1,0 +1,36 @@
+{% extends "base.html" %}  
+{% block content %}
+     <h1><center>Team's Player Data</center></h1>
+     <body>Select a team and year to view certain stats about players playing
+	     on the team that season.</body>
+     <br></br>
+     <form method="POST">
+        {{ form.csrf_token }}
+        {{ form.team }}
+        {{ form.year }}
+        <input type="submit">
+        <p>
+            <span style="color: red;"[{{ error }}]</span>
+        </p>
+    </form>
+    <script>
+        let team_select = document.getElementById('team');
+        let year_select = document.getElementById('year');
+        
+        team_select.onchange = function(){
+            team = team_select.value;
+            fetch('/team/' + team).then(function(response) {
+                response.json().then(function(data) {
+                    
+                    let optionHTML = '';
+                    for(let team of data.teams) {
+                        optionHTML += '<option value="' + team.yearID + '">'
+                            + team.yearID + '</option>';
+                    }
+                    year_select.innerHTML = optionHTML;
+                 });
+            });
+        }
+    </script>
+    {{ table }}
+{% endblock %}

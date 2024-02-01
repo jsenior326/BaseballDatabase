@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %} 
+    <h1><center>Admin Page</center></h1>
+    <body>Select a user to view their logs.</body>
+    <br></br>
+    <form method="POST">
+        {{ form.user }}
+        <input type="submit">
+    </form>
+    <h2>{{ user }}'s total number of queries: {{ num }}</h2>
+    {{ table }}
+
+{% endblock %}

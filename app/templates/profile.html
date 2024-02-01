@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1><center>Profile</center></h1>
+    <h2>Username: {{ user }}</h2>
+    <h3>{{ user }}'s favorite team: {{ f }}</h3>
+    <br></br>
+    <body>Update favorite team</body>
+     <form method="POST">
+        {{ form.fav }}
+        <input type="submit">
+    </form>
+
+{% endblock %}

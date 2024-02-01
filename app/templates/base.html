@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Baseball Project</title>
+        {% else %}
+        <title>Baseball Project</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            Baseball Project: 
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('index') }}">Teams</a>
+            {% if current_user.username == "Admin" %}
+            <a href="{{ url_for('admin') }}">Admin</a>
+            {% endif %}
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('register') }}">Create Account</a>
+            {% else %}
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            {% endif %}
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
