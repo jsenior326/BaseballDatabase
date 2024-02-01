@@ -12,9 +12,9 @@ Change the username and password in the config file "csi3335sp2022.py" to your l
 ```python
 mysql = {
          "host":"localhost",
-         "user":"web",
-	        "password":'foo',
-	        "db":"RadRacoons"
+         "user":"[YOUR USERNAME]",
+         "password":'[YOUR PASSWORD]',
+         "db":"RadRacoons"
 }
 ```
 Load the data by running the following in your terminal in the same directory (This will also load the hall of fame data from load_hall.py. This may take a while).
